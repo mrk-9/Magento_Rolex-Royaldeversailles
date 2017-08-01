@@ -1,0 +1,30 @@
+<ol>
+<?php 
+    $items = $this->getItems(); 
+    list($from, $to) = explode(',', $items[0]->getValueString());
+   
+    if ($from < 0.01) {
+        $from = $this->__('From');
+    } else  {
+        $from = round($from);    
+    }
+       
+    if ($to < 0.01) {
+        $to = $this->__('To');
+    } else {
+        $to = round($to);    
+    }
+    
+?>
+<li>
+
+<input class="input-text" type="text" maxlength="12" size="4" id="price_range_from---<?php echo $this->_filter->getRequestVar()?>" value="<?php echo $from?>"
+onclick="if(this.value==this.name) this.value='';"  name="<?php echo $this->__('From')?>"/>
+<span>-</span>
+<input class="input-text" type="text" maxlength="12" size="4" id="price_range_to---<?php echo $this->_filter->getRequestVar()?>" value="<?php echo $to?>"
+onclick="if(this.value==this.name) this.value='';" name="<?php echo $this->__('To')?>"/>
+<button type="button" class="button" id="price_button_go---<?php echo $this->_filter->getRequestVar()?>"><span><?php echo $this->__('Go')?></span></button>
+
+</li>
+</ol>
+<input type="hidden" value="<?php echo $this->_filter->getRequestVar()?>" class="price-input">

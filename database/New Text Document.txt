@@ -1,0 +1,1 @@
+XAMPP\mysql\bin>mysqldump.exe -u root -p rolexroyaldevers > D:\XAMPP\htdocs\rolex\database\rolexroyaldevers.sql

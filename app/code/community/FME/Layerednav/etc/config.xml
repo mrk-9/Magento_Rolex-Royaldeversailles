@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Catalog Layered Navigation
+*
+* @category     FME
+* @package      FME_Layerednav
+* @copyright    Copyright (c) 2010-2011 FME (http://www.fmeextensions.com/)
+* @author       FME (Kamran Rafiq Malik)
+* @version      Release: 1.0.0
+*/
+-->
+<config>
+    <modules>
+        <FME_Layerednav>
+            <version>1.0.0</version>
+        </FME_Layerednav>
+    </modules>
+    <frontend>
+        <routers>
+            <layerednav>
+                <use>standard</use>
+                <args>
+                    <module>FME_Layerednav</module>
+                    <frontName>layerednav</frontName>
+                </args>
+            </layerednav>
+        </routers>
+        <layout>
+            <updates>
+                <layerednav>
+                    <file>layerednav.xml</file>
+                </layerednav>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <FME_Layerednav>
+                    <files>
+                        <default>FME_Layerednav.csv</default>
+                    </files>
+                </FME_Layerednav>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <FME_Layerednav>
+                    <files>
+                        <default>FME_Layerednav.csv</default>
+                    </files>
+                </FME_Layerednav>
+            </modules>
+        </translate>
+    </adminhtml> 
+    
+   
+    <global> 
+        <models>
+            <layerednav>
+                <class>FME_Layerednav_Model</class>
+            </layerednav>
+        </models>     
+    
+        <blocks>
+            <layerednav>
+                <class>FME_Layerednav_Block</class>
+            </layerednav>
+            
+            <catalog>
+                <rewrite>
+                    <category_view>FME_Layerednav_Block_Rewrite_RewriteCatalogCategoryView</category_view>
+                </rewrite> 
+            </catalog>  
+            
+            <catalog>
+                <rewrite>
+                    <layer_view>FME_Layerednav_Block_Rewrite_RewriteCatalogLayerView</layer_view>
+                </rewrite>
+            </catalog>          
+            <catalogsearch>
+                <rewrite>
+                    <result>FME_Layerednav_Block_Rewrite_RewriteCatalogsearchResult</result>
+                </rewrite> 
+            </catalogsearch>            
+        </blocks>
+        <helpers>
+            <layerednav>
+                <class>FME_Layerednav_Helper</class>
+            </layerednav>
+        </helpers>
+        <resources>
+            <layerednav_setup>
+                <setup>
+                    <module>FME_Layerednav</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </layerednav_setup>
+            <layerednav_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </layerednav_write>
+            <layerednav_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </layerednav_read>
+        </resources>
+    </global> 
+    <default>
+        <layerednav>
+            <layerednav>
+                <cat_style>breadcrumbs</cat_style>
+                <price_style>default</price_style>
+                <remove_links>0</remove_links>
+                <reset_filters>1</reset_filters>
+            </layerednav>  
+        </layerednav>
+    </default>
+</config>

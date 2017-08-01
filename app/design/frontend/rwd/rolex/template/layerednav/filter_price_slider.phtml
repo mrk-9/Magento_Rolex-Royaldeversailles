@@ -1,0 +1,61 @@
+
+<?php 
+    //todo: move logic to the block
+    list($min,$max) = $this->_filter->getMinMaxPriceInt(); 
+    list($from,$to) = explode(',', $this->_filter->getActiveState()); 
+    
+     $from = floor(max($from, $min));
+    
+    if ($to) {
+         $to   = ceil(min($to, $max));
+    } else {
+         $to = $max;
+    }
+    
+    if ($to<1 && $from<1) {
+         $to = $max;
+    }
+
+	//Set the slider width
+    $width = 170;
+    
+    if ($max) {
+        if ($max == $min) {
+            $firstOffset = 0;
+            $secondOffset = $width;
+        } else  {
+			 $firstOffset  = ($from-$min)*$width/($max-$min);
+			 $secondOffset = ($to-$min)*$width/($max-$min);
+        }
+    } else  {
+			$firstOffset  = 0;
+			$secondOffset = 0;
+    }
+?>
+<ol>
+    <li class="price-container">
+<?php if ($to != $from) :?> 
+<div id="fme_layered_price_slider<?php echo $this->_filter->getRequestVar()?>" class="price_slider">
+    <div class="handle selected" style="left:<?php echo $firstOffset?>px"></div>
+    <div class="handle" style="left:<?php echo $secondOffset?>px"></div>
+  </div>
+<?php endif;?> 
+
+<?php if ($to != $from) :?> 
+    <div>
+<?php echo $this->__('Range:')?> 
+<?php echo $this->getSymbol()?><span id="price_range_from<?php echo $this->_filter->getRequestVar()?>"><?php echo $from?></span>-<?php echo $this->getSymbol()?><span id="price_range_to<?php echo $this->_filter->getRequestVar()?>"><?php echo $to?></span></div>
+<script type="text/javascript">
+    var slider = create_price_slider(<?php echo $width.', '.$firstOffset.', '.$secondOffset.', '.$min.', '.$max.',"'.$this->_filter->getRequestVar()?>");
+window.onresize = function() {
+
+
+
+    };
+</script>
+<?php else:?>
+<?php echo $this->__('Value:')?> 
+<?php echo $this->getSymbol()?><span id="price_range_from<?php echo $this->_filter->getRequestVar()?>"><?php echo $from?></span>
+<?php endif;?> 
+    </li>
+</ol>

@@ -1,0 +1,119 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+$option = '';
+$advancecontactformStatus = Mage::getStoreConfig('advancecontactformsetting/advancecontactform/advancecontactformstatus');
+$hideit = 'ok';
+$option .= '<option value="">'. $this->__("Please Select Department") .'</option>';
+if($advancecontactformStatus)
+{
+    $departmentContactsValue = Mage::getStoreConfig('advancecontactformsetting/advancecontactform/departmentalcontact');
+    $departmentContactsArray = explode(";", $departmentContactsValue);
+    foreach ($departmentContactsArray as $key => $contactInfoString) 
+    {
+        if(!empty($departmentContactsArray[$key]))
+        {
+            if(strstr($contactInfoString, "|"))
+            {
+                $contactInfoArray = explode("|", $contactInfoString);
+                $option .= '<option value="'.trim($contactInfoArray[1]).'">'.trim($contactInfoArray[0]).'';
+                $hideit = "";
+            }
+        }
+    }
+}
+
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('advancecontactform')->__('Advance Contact Form') ?></h1>
+</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="salesforceForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('advancecontactform')->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="fname" class="required"><em>*</em><?php echo Mage::helper('advancecontactform')->__('First Name') ?></label>
+                    <div class="input-box">
+                        <input name="fname" id="fname" title="<?php echo Mage::helper('advancecontactform')->__('First Name') ?>" value="" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="lname" class="required"><em>*</em><?php echo Mage::helper('advancecontactform')->__('Last Name') ?></label>
+                    <div class="input-box">
+                        <input name="lname" id="lname" title="<?php echo Mage::helper('advancecontactform')->__('Last Name') ?>" value="" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+            </li>
+            
+            <li class="fields">
+                <div class="field">
+                    <label for="telephone"><?php echo Mage::helper('advancecontactform')->__('Home Phone Number') ?></label>
+                    <div class="input-box">
+                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('advancecontactform')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('advancecontactform')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('advancecontactform')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                
+                <div class="field">
+                    <label for="Department" class="required"><em>*</em><?php echo Mage::helper('advancecontactform')->__('Department') ?></label>
+                    <div class="input-box">
+                        <select id="contactperson" name="contactperson" title="<?php echo $this->__('Select Department') ?>" class="validate-select">
+                                <?php
+                                echo $option;
+                                ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('advancecontactform')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('advancecontactform')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo Mage::helper('advancecontactform')->__('* Required Fields') ?></p>
+        <input type="text" name="hideit" id="hideit" value="<?php echo $hideit; ?>" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('advancecontactform')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var salesforceForm = new VarienForm('salesforceForm', true);
+//]]>
+</script>

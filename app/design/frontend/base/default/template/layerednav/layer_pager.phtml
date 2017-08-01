@@ -1,0 +1,13 @@
+<?php
+/*
+ * Adding javascript include
+ */
+echo Mage::app()->getRequest()->getControllerName();
+if ('front' != Mage::app()->getRequest()->getControllerName())
+{
+?>
+    <script>catalog_toolbar_init()</script>
+<?php
+
+}
+?>

@@ -1,0 +1,9 @@
+a:5:{i:0;s:25:"Unsupported image format.";i:1;s:995:"#0 D:\XAMPP\htdocs\rolex\lib\Varien\Image\Adapter\Gd2.php(74): Varien_Image_Adapter_Gd2->_getCallback('create')
+#1 D:\XAMPP\htdocs\rolex\app\code\core\Mage\Adminhtml\controllers\Cms\WysiwygController.php(51): Varien_Image_Adapter_Gd2->open('D:\\XAMPP\\htdocs...')
+#2 D:\XAMPP\htdocs\rolex\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mage_Adminhtml_Cms_WysiwygController->directiveAction()
+#3 D:\XAMPP\htdocs\rolex\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('directive')
+#4 D:\XAMPP\htdocs\rolex\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#5 D:\XAMPP\htdocs\rolex\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#6 D:\XAMPP\htdocs\rolex\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 D:\XAMPP\htdocs\rolex\index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:208:"/rolex/index.php/admin/cms_wysiwyg/directive/___directive/e3ttZWRpYSB1cmw9IjxpbWcgc3JjPSJ7e21lZGlhIHVybD0id3lzaXd5Zy9pbWFnZS9veXN0ZXJfZmVhdHVyZV9pbWcxXzY0MHg1NjAuanBnIn19/key/2238f463d37296563cd01c2a109104fb/";s:11:"script_name";s:16:"/rolex/index.php";s:4:"skin";s:5:"admin";}

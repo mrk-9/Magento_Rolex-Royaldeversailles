@@ -1,0 +1,12 @@
+a:5:{i:0;s:167:"Cannot send headers; headers already sent in /home/vdcprojects/public_html/rolex/app/code/community/Zestard/Advancecontactform/controllers/IndexController.php, line 48";i:1;s:1659:"#0 /home/vdcprojects/public_html/rolex/lib/Zend/Controller/Response/Abstract.php(148): Zend_Controller_Response_Abstract->canSendHeaders(true)
+#1 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Response/Http.php(107): Zend_Controller_Response_Abstract->setRedirect('http://vdcproje...', 302)
+#2 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Varien/Action.php(711): Mage_Core_Controller_Response_Http->setRedirect('http://vdcproje...')
+#3 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Varien/Action.php(689): Mage_Core_Controller_Varien_Action->setRedirectWithCookieCheck('*/*/index', Array)
+#4 /home/vdcprojects/public_html/rolex/app/code/community/Zestard/Advancecontactform/controllers/IndexController.php(115): Mage_Core_Controller_Varien_Action->_redirect('*/*/index')
+#5 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Zestard_Advancecontactform_IndexController->postAction()
+#6 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('post')
+#7 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /home/vdcprojects/public_html/rolex/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /home/vdcprojects/public_html/rolex/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /home/vdcprojects/public_html/rolex/index.php(83): Mage::run('', 'store')
+#11 {main}";s:3:"url";s:39:"/rolex/index.php/contact-us/index/post/";s:11:"script_name";s:16:"/rolex/index.php";s:4:"skin";s:7:"default";}

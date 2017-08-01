@@ -1,0 +1,68 @@
+
+<?php if ($this->canShowBlock()): $state = $this->getStateInfo() ?>
+    <div class="block block-layered-nav">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Filter Your Search') ?></span></strong>
+           
+        </div>
+        <div class="block-content">
+            <?php echo $this->getStateHtml() ?>
+            <?php if ($this->canShowOptions()): ?>
+                <?php
+                
+                ?>
+                <div class="fme-filter">
+                    <input type="hidden" id="fme_layered_url" value="<?php echo $this->htmlEscape($state[0]) ?>"/>
+                    <input type="hidden" id="fme_layered_params" value="<?php echo $this->htmlEscape($state[1]) ?>"/> 
+                    <input type="hidden" id="fme_layered_ajax" value="<?php echo $this->htmlEscape($state[2]) ?>"/> 
+                     <p class="block-subtitle block-subtitle--filter ">Filter</p>
+                    <dl id="fme_filters_list" >
+                        <?php if ($state[1] AND $this->bNeedClearAll()): ?>
+                            <div class="actions fme_layered_clear_all"><a class="fme_layered_clearall" href="<?php echo $this->htmlEscape($this->getClearAllUrl()) ?>"><?php echo $this->__('Clear All') ?></a></div>            
+                        <?php endif ?>
+
+                        <?php $_filters = $this->getFilters() ?>
+                        <?php foreach ($_filters as $_filter): ?>
+                            <?php if ($_filter->getItemsCount()): ?>
+                                <dt class="fme_layered_dt">
+                                <?php if ($clearUrl = $_filter->getClearUrl()): ?>
+                                    <a id="<?php echo $_filter->getVar() ?>-clear" <?php if (!$this->getIsRemoveLinks()): ?>href="<?php echo $this->htmlEscape($clearUrl) ?>" <?php endif; ?> class="btn-remove fme_layered_clear" title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->__('Remove This Item') ?></a>
+                                <?php endif ?>
+                                <?php echo $this->__($_filter->getName()) ?>
+                                </dt>
+                                <dd <?php echo $this->getHeightStyle() ?> id="fme_layered_<?php echo $_filter->getVar() ?>"
+                                >
+                                    
+                                <?php echo $_filter->getHtml() ?>
+                                
+                                </dd>
+                                    
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
+                    <script type="text/javascript">
+                        decorateDataList('fme_filters_list');
+                        fme_layered_init();
+                    </script>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="fme_loading_filters" style="display:none"></div>
+    </div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    fme_layered_init();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+

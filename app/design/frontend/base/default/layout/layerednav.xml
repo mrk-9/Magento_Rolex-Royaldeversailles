@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+<layerednav_front_category>
+
+    <remove name="right"/>
+    <remove name="left"/>
+    <block type="layerednav/layer_view" name="layer"  template="layerednav/layer.phtml"/>
+    <block type="layerednav/list" name="root">
+
+        <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+            <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                <block type="page/html_pager" name="product_list_toolbar_pager"/>
+            </block>
+            <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>4</count></action>
+            <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+        </block>
+    </block>
+</layerednav_front_category>
+
+<layerednav_front_search>
+    <remove name="right"/>
+    <remove name="left"/>
+    <block type="layerednav/search_layer" name="layer"  template="layerednav/layer.phtml"/>
+    <block type="layerednav/list" name="root">
+        <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+            <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                <block type="page/html_pager" name="product_list_toolbar_pager"/>
+            </block>
+            <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+            <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>4</count></action>
+            <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+        </block>
+    </block>
+</layerednav_front_search>
+
+<catalog_category_layered> 
+    <remove name="catalog.leftnav"/>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
+        <action method="addItem"><type>skin_js</type><name>js/FME/fme_layered_nav.js</name></action>
+        <action method="addItem"><type>skin_js</type><name>js/FME/jquery.min.js</name></action>
+        <action method="addItem"><type>skin_js</type><name>js/FME/noconflict.js</name></action>
+        
+    </reference>
+    <reference name="left">
+            
+        <block type="layerednav/layer_view" name="filter.catalog" after="currency" template="layerednav/layer.phtml"/>
+    </reference>
+</catalog_category_layered> 
+
+
+<catalogsearch_result_index translate="label">
+
+   <remove name="catalogsearch.leftnav"/>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
+         <action method="addItem"><type>skin_js</type><name>/js/FME/fme_layered_nav.js</name></action>
+    </reference>
+    <reference name="left">
+            <block type="layerednav/search_layer" name="catalogsearch.layerednav" after="currency" template="layerednav/layer.phtml"/>
+    </reference>
+	
+</catalogsearch_result_index> 
+
+
+</layout>

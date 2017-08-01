@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zestard_Advancecontactform>
+            <version>1.0.2</version>
+        </Zestard_Advancecontactform>
+    </modules>
+   
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Advance Contact Form</title>
+                </all>
+                <admin>
+                    <children>
+                        <Zestard_Advancecontactform>
+                            <title>Departmental Contact Setting</title>
+                            <sort_order>10</sort_order>
+                        </Zestard_Advancecontactform>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <advancecontactformsetting translate="title" module="advancecontactform">
+                                            <title>Contact Setting</title>
+                                            <sort_order>100</sort_order>
+                                        </advancecontactformsetting>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <advancecontactform>
+                    <file>advancecontactform.xml</file>
+                </advancecontactform>
+            </updates>
+        </layout>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <advancecontactform>
+                <use>standard</use>
+                <args>
+                    <module>Zestard_Advancecontactform</module>
+                    <frontName>contact-us</frontName>
+                </args>
+            </advancecontactform>
+        </routers>
+        <layout>
+            <updates>
+                <advancecontactform>
+                    <file>advancecontactform.xml</file>
+                </advancecontactform>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <advancecontactform>
+                <class>Zestard_Advancecontactform_Helper</class>
+            </advancecontactform>
+        </helpers>
+        <template>
+            <email>
+                <advancecontactformsetting_advancecontactform_advancecontactformtemplate module="advancecontactform">
+                        <label>Advance Contact Form</label>
+                        <file>advancecontactform/advancecontactform.html</file>
+                        <type>html</type>
+                </advancecontactformsetting_advancecontactform_advancecontactformtemplate>
+            </email>
+	</template>
+    </global>
+    <default>
+            <advancecontactformsetting>
+                <advancecontactform>
+                     <advancecontactformtemplate>advancecontactformsetting_advancecontactform_advancecontactformtemplate</advancecontactformtemplate>
+                </advancecontactform>
+            </advancecontactformsetting>
+    </default>
+</config>

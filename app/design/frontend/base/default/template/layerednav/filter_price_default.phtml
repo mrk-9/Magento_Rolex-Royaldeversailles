@@ -1,0 +1,10 @@
+
+
+
+<ol>
+<?php foreach ($this->getItems() as $_item): ?>
+    <li>
+        <a id="<?php echo $_item->getFilter()->getRequestVar() . '-' .str_replace('-',',', $_item->getValueString())  ?>" href="<?php echo $this->htmlEscape($_item->getUrl()) ?>" class="fme_layered_price <?php if ($this->isSelected($_item)) echo 'adj-nav-price-selected';?>" ><?php echo $_item->getLabel() ?></a> (<?php echo $_item->getCount() ?>)
+    </li>
+<?php endforeach ?>
+</ol>

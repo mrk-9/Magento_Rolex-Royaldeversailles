@@ -1,0 +1,19 @@
+<ol>
+<?php foreach ($this->getItems() as $_item):?>
+    <li><div class="color">
+        <?php if ($_item->getIsCurrent()): ?>
+        <span class="adj-nav-category-current"><?php echo $_item->getLabel() ?></span>
+        <?php  else: ?>
+		<?php if (Mage::getStoreConfig('layerednav/layerednav/reload_categories')) { ?>
+                    <a id="cat-<?php echo $_item->getCategoryId()?>" href="<?php echo $this->htmlEscape($_item->getUri()) ?>" class="adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?></a>
+                <?php } else { ?>
+                        <a id="cat-<?php echo $_item->getCategoryId()?>" href="<?php echo $this->htmlEscape($_item->getUri()) ?>" class="fme_layered_category adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?></a>
+                <?php }
+                   if($_item->getCount()): ?>  
+                     <!--<span>(<?php echo $_item->getCount() ?>)</span> -->
+            <?php endif ?>
+        <?php endif ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
